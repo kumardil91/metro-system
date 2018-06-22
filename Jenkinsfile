@@ -12,6 +12,11 @@ node {
         sh "${mvnHome}/bin/mvn test -B"
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'target/*.jar'
+      def java = scanForIssues tool: [$class: 'Java']
+        def javadoc = scanForIssues tool: [$class: 'JavaDoc']
+         
+        publishIssues issues:[java]
+        publishIssues issues:[javadoc]
    }
     stage ('Analysis') {
         def mvnHome = tool name: 'maven-3', type: 'maven'
