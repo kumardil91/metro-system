@@ -1,6 +1,6 @@
 node { 
    stage('SCM Checkout') {
-    git 'https://github.com/kumardil91/spring-boot-maven-example-helloworld'
+    git 'https://github.com/kumardil91/metro-system'
    }
    stage('Build'){
    //Get maven home path 
