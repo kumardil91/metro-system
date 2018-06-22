@@ -5,9 +5,10 @@ node {
    stage('Build'){
    //Get maven home path 
    def mvnHome =  tool name: 'maven-3', type: 'maven'   
-      sh "${mvnHome}/bin/mvn clean package"
+      sh "${mvnHome}/bin/mvn clean compile"
    }
    stage('Test') {
+        sh '${mvnHome}/bin/mvn test -B'
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'target/*.jar'
    }
