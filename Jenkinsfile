@@ -9,7 +9,7 @@ node {
    }
    stage('Test') {
       def mvnHome =  tool name: 'maven-3', type: 'maven'
-        sh '${mvnHome}/bin/mvn test -B'
+        sh "${mvnHome}/bin/mvn test -B"
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'target/*.jar'
    }
