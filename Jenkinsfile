@@ -16,7 +16,7 @@ node {
     stage ('Analysis') {
         def mvnHome = tool name: 'maven-3', type: 'maven'
  
-        sh "${mvnHome}/bin/mvn -batch-mode -V -U -e checkstyle:checkstyle pmd:pmd pmd:cpd findbugs:findbugs spotbugs:spotbugs"
+        sh "${mvnHome}/bin/mvn -batch-mode -V -U -e checkstyle:checkstyle pmd:pmd pmd:cpd findbugs:findbugs "
  
         def checkstyle = scanForIssues tool: [$class: 'CheckStyle'], pattern: '**/target/checkstyle-result.xml'
         publishIssues issues:[checkstyle]
@@ -30,7 +30,5 @@ node {
         def findbugs = scanForIssues tool: [$class: 'FindBugs'], pattern: '**/target/findbugsXml.xml'
         publishIssues issues:[findbugs]
  
-        def spotbugs = scanForIssues tool: [$class: 'SpotBugs'], pattern: '**/target/spotbugsXml.xml'
-        publishIssues issues:[spotbugs]
     }
 }
