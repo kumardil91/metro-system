@@ -9,9 +9,8 @@ node {
    }
    stage('Test') {
         sh '${mvnHome}/bin/mvn test -B'
-   }
-   {
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'target/*.jar'
-}
+   }
+   
 }
