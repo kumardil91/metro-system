@@ -87,34 +87,6 @@ public class MetroServiceTest extends TestCase {
 	}
 
 	
-	@Test
-	public void testCalculateSwipeInSwipeOut2() throws MinimumBalanceException, InsuffficentBalanceException {
-		metroService.swipeIn(card, Station.A1, LocalDateTime.of(2018, 06, 03, 15, 07));
-		metroService.swipeOut(card, Station.A6, LocalDateTime.of(2018, 06, 03, 15, 30));
-		metroService.swipeIn(card, Station.A6, LocalDateTime.of(2018, 06, 03, 18, 07));
-		metroService.swipeOut(card, Station.A10, LocalDateTime.of(2018, 06, 03, 18, 40));
+	
 
-		int totalFootfall = metroService.calculateSwipeInSwipeOut(Station.A6);
-
-		Assert.assertEquals("Total swipe in and swipe out for station A6", 2, totalFootfall);
-
-		assertEquals("FootFall for station A6 should be 2", metroService.calculateSwipeInSwipeOut(Station.A6), 3);
-		assertEquals("FootFall for station A1 should be 1", metroService.calculateSwipeInSwipeOut(Station.A1), 2);
-		assertEquals("FootFall for station A10 should be 1", metroService.calculateSwipeInSwipeOut(Station.A10), 1);
-	}
-
-	@Test
-	public void testGetCardReport2() throws MinimumBalanceException, InsuffficentBalanceException {
-		metroService.swipeIn(card, Station.A2, LocalDateTime.of(2018, Month.JUNE, 03, 15, 07));
-		metroService.swipeOut(card, Station.A6, LocalDateTime.of(2018, Month.JUNE, 03, 18, 35));
-		metroService.swipeIn(card, Station.A6, LocalDateTime.of(2018, Month.JUNE, 04, 18, 07));
-		metroService.swipeOut(card, Station.A10, LocalDateTime.of(2018, Month.JUNE, 04, 18, 50));
-		final List<CardTraxDetails> trxs = metroService.getCardReport(card);
-		assertEquals("There should be 2 trxs for this card", trxs.size(), 2);
-		assertEquals("first One of the Trx should be charged 22", Double.valueOf(trxs.get(0).getFare()),
-				Double.valueOf(22.0));
-
-		assertEquals("Other Trx should be charged 28", Double.valueOf(trxs.get(1).getFare()), Double.valueOf(27));
-
-	}
 }
