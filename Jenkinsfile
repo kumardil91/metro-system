@@ -14,7 +14,7 @@ node {
       archive 'target/*.jar'
    }
     stage ('Analysis') {
-        def mvnHome = tool 'maven-3', type: 'maven'
+        def mvnHome = tool name: 'maven-3', type: 'maven'
  
         sh "${mvnHome}/bin/mvn -batch-mode -V -U -e checkstyle:checkstyle pmd:pmd pmd:cpd findbugs:findbugs spotbugs:spotbugs"
  
