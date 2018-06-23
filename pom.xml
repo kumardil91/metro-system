@@ -27,7 +27,7 @@
     <dependency>
       <groupId>net.sourceforge.pmd</groupId>
       <artifactId>pmd-java</artifactId>
-      <version>${pmdVersion}</version>
+      <version>6.4.0</version>
     </dependency>
 
   </dependencies>
