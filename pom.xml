@@ -23,12 +23,5 @@
     <version>4.12</version>
     <scope>test</scope>
 </dependency>
-    
-    <dependency>
-      <groupId>net.sourceforge.pmd</groupId>
-      <artifactId>pmd-java</artifactId>
-      <version>6.4.0</version>
-    </dependency>
-
-  </dependencies>
+    </dependencies>
 </project>
