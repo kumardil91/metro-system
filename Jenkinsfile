@@ -7,14 +7,7 @@ node {
    def mvnHome =  tool name: 'maven-3', type: 'maven'   
       sh "${mvnHome}/bin/mvn clean compile"
    }
-   stage('Test') {
-      def mvnHome =  tool name: 'maven-3', type: 'maven'
-        sh "${mvnHome}/bin/mvn test -B"
-      junit '**/target/surefire-reports/TEST-*.xml'
-      archive 'target/*.jar'
-      
-   }
-    stage ('Analysis') {
+   stage ('Analysis') {
         def mvnHome = tool name: 'maven-3', type: 'maven'
  
         sh "${mvnHome}/bin/mvn -batch-mode -V -U -e pmd:pmd pmd:cpd  "
@@ -25,4 +18,12 @@ node {
         publishIssues issues:[cpd]
          
     }
+   stage('Test') {
+      def mvnHome =  tool name: 'maven-3', type: 'maven'
+        sh "${mvnHome}/bin/mvn test -B"
+      junit '**/target/surefire-reports/TEST-*.xml'
+      archive 'target/*.jar'
+      
+   }
+    
 }
