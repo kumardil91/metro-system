@@ -15,5 +15,10 @@ node {
       archive 'target/*.jar'
       
    }
+   stage('Development deploy') {
+   def jarName = "application-*.jar"
+   build job: 'ApplicationToDev', parameters: [[$class: 'StringParameterValue', name: 'jarName', value: jarName]]
+      echo 'the application is deployed !'
+   }
     
 }
