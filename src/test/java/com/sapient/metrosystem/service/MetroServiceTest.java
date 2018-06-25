@@ -85,22 +85,6 @@ public class MetroServiceTest extends TestCase {
 		assertEquals("Other Trx should be charged 28", Double.valueOf(trxs.get(1).getFare()), Double.valueOf(28.0));
 
 	}
-	@Test
-	public void testCalculateSwipeInSwipeOut2() throws MinimumBalanceException, InsuffficentBalanceException {
-		metroService.swipeIn(card, Station.A1, LocalDateTime.of(2018, 06, 03, 15, 07));
-		metroService.swipeOut(card, Station.A6, LocalDateTime.of(2018, 06, 03, 15, 30));
-		metroService.swipeIn(card, Station.A6, LocalDateTime.of(2018, 06, 03, 18, 07));
-		metroService.swipeOut(card, Station.A10, LocalDateTime.of(2018, 06, 03, 18, 40));
-
-		int totalFootfall = metroService.calculateSwipeInSwipeOut(Station.A6);
-
-		Assert.assertEquals("Total swipe in and swipe out for station A6", 2, totalFootfall);
-
-		assertEquals("FootFall for station A6 should be 2", metroService.calculateSwipeInSwipeOut(Station.A6), 3);
-		assertEquals("FootFall for station A1 should be 1", metroService.calculateSwipeInSwipeOut(Station.A1), 2);
-		assertEquals("FootFall for station A10 should be 1", metroService.calculateSwipeInSwipeOut(Station.A10), 1);
-}
-
 	
 	
 
