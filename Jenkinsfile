@@ -15,9 +15,13 @@ node {
       archive 'target/*.jar'
       
    }
-   stage('Slack Notification'){
-    slackSend baseUrl: 'https://necect.slack.com/services/hooks/jenkins-ci/', channel: 'jenkinspipeline', color: 'Red', message: 'Slack Notification', teamDomain: 'necect', tokenCredentialId: 'slackjen'
+   post {
+      success {
+    slackSend baseUrl: 'https://necect.slack.com/services/hooks/jenkins-ci/', channel: 'jenkinspipeline', color: 'Red', message: 'Build Successful', teamDomain: 'necect', tokenCredentialId: 'slackjen'
 
+   }
+      failure {
+        slackSend baseUrl: 'https://necect.slack.com/services/hooks/jenkins-ci/', channel: 'jenkinspipeline', color: 'Good', message: 'Build failed', teamDomain: 'necect', tokenCredentialId: 'slackjen'
    }
     
 }
