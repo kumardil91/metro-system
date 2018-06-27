@@ -17,12 +17,12 @@ node {
    }
    stage('Slack Notification'){
        slackSend baseUrl: 'https://necect.slack.com/services/hooks/jenkins-ci/',
-       channel: '#jenkinspipeline',
-       color: 'red', 
-       message: 'Welcome to Jenkins, Slack!', 
-       teamDomain: 'javahomecloud',
-       tokenCredentialId: 'slack-demo'
+	   token : uAKCcZp0tG70EBcC6yq3uACz
+       channel: "#jenkinspipeline",
+       color: "red", 
+       message: "Welcome to Jenkins, Slack!"
  }
+ 
       
     
 }
