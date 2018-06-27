@@ -16,7 +16,8 @@ node {
       
    }
    stage('Slack Notification'){
-     slackSend channel: '#jenkinspipeline', color: 'good', message: 'Slack Message', teamDomain: 'necect', token: 'uAKCcZp0tG70EBcC6yq3uACz'
+    slackSend baseUrl: 'https://necect.slack.com/services/hooks/jenkins-ci/', channel: 'jenkinspipeline', color: 'Red', message: 'Slack Notification', teamDomain: 'necect', tokenCredentialId: 'slackjen'
+
    }
     
 }
