@@ -15,3 +15,4 @@ stages {
       archive 'target/*.jar'
    }
       }
+}
