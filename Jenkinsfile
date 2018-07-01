@@ -1,6 +1,5 @@
-pipeline {
-stages { 
-   stage('SCM Pull') {
+node {
+ stage('SCM Pull') {
     git 'https://github.com/kumardil91/metro-system'
    }
    stage('Build'){
@@ -15,4 +14,4 @@ stages {
       archive 'target/*.jar'
    }
       }
-}
+
